@@ -9,7 +9,6 @@ root_dir = Path(os.path.dirname(__file__))
 in_dir = os.path.join(root_dir, 'data/samples')
 out_dir = os.path.join(root_dir, 'data/converted')
 
-# - [OpenCV tutorial on hierarchy of contours](https://docs.opencv.org/4.x/d9/d8b/tutorial_py_contours_hierarchy.html)
 
 if __name__ == '__main__':
     import cv2
