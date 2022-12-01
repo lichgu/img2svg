@@ -1,21 +1,23 @@
 # Created by lcg at 27.11.22
 import cv2
 import numpy as np
-from pathlib import Path
-from typing import Tuple, Union
+from typing import Tuple
+
+import utils
 
 
 def contour_detection(
-        img_path: Union[str, Path],
+        img_path: str,
         show_img: bool = False,
         show_converted_img: bool = False,
         save_converted_img: bool = False,
-        out_path: Union[str, Path] = 'contour.png',
+        out_path: str = 'contour.png',
         threshold: float = 225,
         contour_retrieval_mode: int = cv2.RETR_TREE,
         contour_approx_mode: int = cv2.CHAIN_APPROX_SIMPLE,
         min_length: int = 1,
 ) -> Tuple[np.ndarray]:
+    utils.assert_file_exists(img_path)
     img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)
     img_grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     _, binary = cv2.threshold(img_grey, threshold, 255, cv2.THRESH_BINARY_INV)
@@ -38,14 +40,15 @@ def contour_detection(
 
 
 def edge_detection(
-        img_path: Union[str, Path],
+        img_path: str,
         show_img: bool = False,
         show_converted_img: bool = False,
         save_converted_img: bool = False,
-        out_path: Union[str, Path] = 'edges.png',
+        out_path: str = 'edges.png',
         canny_lower_limit=150,
         canny_upper_limit=200,
 ) -> np.ndarray:
+    utils.assert_file_exists(img_path)
     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
     # blur image if necessary
     # kernel_size = (5, 5)  # Gaussian kernel size
