@@ -1,4 +1,6 @@
 # Created by lcg at 26.11.22
+""" For demonstrating sample usage. Not required for svg creation.
+"""
 import os
 from pathlib import Path
 
